@@ -27,12 +27,6 @@ public class View {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 		while (true) {
-			Calendar calendar = Calendar.getInstance();
-			Date d = new Date();
-			calendar.setTime (d);
-			System.out.println (calendar.get(Calendar.YEAR));
-			System.out.println (calendar.get(Calendar.DAY_OF_MONTH));
-			System.out.println (calendar.get(Calendar.MONTH));
 
 			System.out.print(exit + " ");
 			System.out.print(add + " ");
@@ -135,17 +129,25 @@ public class View {
 					String month = reader.readLine();
 					System.out.println("Enter year! Example 2016");
 					String year = reader.readLine();
-					request4.setCommandName("WRITE_FILE");
-
-//					request6.setFindString(search);
-//					request3.setCommandName("FIND_NOTES");
+					request6.setCommandName("FIND_BY_DATE");
+					Response response6 = controller.doRequest(request6);
+					if(response6.isErrorStatus() ==  false){
+						System.out.println(response6.getErrorMessage());
+					}else {
+						FindByDateResponse res = (FindByDateResponse) response6;
+						List<Note> noteFind = res.getDateNotes();
+						if (!noteFind.isEmpty()) {
+							for (Note note : noteFind) {
+								System.out.println(note);
+							}
+						}
+						System.out.println(response6.getResultMessage());
+					}
+					break;
 				default: break;
 			}
-
 		}
-
-		
-		
 	}
 
 }
+

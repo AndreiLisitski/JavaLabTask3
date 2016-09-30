@@ -31,17 +31,3 @@ public class WriteFile implements Command {
         return response;
     }
 }
-
-//public class CreateBook implements Command {
-//
-//    @Override
-//    public Response execute(Request request) throws CommandException {
-//
-//        NoteBook noteBook = NoteBookProvider.getInstance().getNoteBook();
-//        noteBook.cleanNoteBook();
-//        Response response = new Response();
-//        response.setErrorStatus(true);
-//        response.setResultMessage("New notebook is created!");
-//        return response;
-//    }
-//}

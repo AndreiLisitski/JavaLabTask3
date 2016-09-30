@@ -5,7 +5,7 @@ import by.tc.nb.bean.entity.Note;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindDatesResponse extends Response {
+public class FindByDateResponse extends Response {
 
     private List<Note> dateNotes = new ArrayList<Note>();
 

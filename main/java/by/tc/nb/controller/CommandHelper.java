@@ -17,7 +17,7 @@ public class CommandHelper {
 		commands.put("CREATE_NOTEBOOK", new CreateBook());
 		commands.put("WRITE_FILE", new WriteFile());
 		commands.put("READ_FILE", new ReadFile());
-		commands.put("FIND_BY_DATE", new FindDates());
+		commands.put("FIND_BY_DATE", new FindByDate());
 		//commands.put
 
 	}

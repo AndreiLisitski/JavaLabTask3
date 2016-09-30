@@ -34,9 +34,4 @@ public class Response {
 		this.resultMessage = resultMessage;
 	}
 
-//	public void setAllBook(List<Note> allBook) {
-//	}
-	
-	
-
 }

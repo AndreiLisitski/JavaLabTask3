@@ -32,6 +32,7 @@ public class FindNotes implements Command {
 			throw new CommandException("Wrong request");
 		}
 		List<Note> list = new ArrayList<Note>();
+
 		for (Note note : noteBook.getNotes()) {
 			if (note.getNote().contains(req.getFindString())) {
 				list.add(note);

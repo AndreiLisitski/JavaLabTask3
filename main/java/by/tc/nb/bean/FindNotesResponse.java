@@ -2,7 +2,6 @@ package by.tc.nb.bean;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import by.tc.nb.bean.entity.Note;
 
 public class FindNotesResponse extends Response {

@@ -18,10 +18,10 @@ public class ShowNoteBook implements Command {
         ShowAllNotesResponse res;
         if (response instanceof ShowAllNotesResponse) {
             res = (ShowAllNotesResponse) response;
+
         } else {
             throw new CommandException("Wrong response");
         }
-
         res.setAllBook(noteBook.getNotes());
         res.setErrorStatus(true);
         if (res.getAllBook().isEmpty()) {

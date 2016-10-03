@@ -9,7 +9,6 @@ import by.tc.nb.bean.entity.NoteBook;
 import by.tc.nb.command.Command;
 import by.tc.nb.command.exception.CommandException;
 import by.tc.nb.source.NoteBookProvider;
-
 import java.util.ArrayList;
 import java.util.List;
 

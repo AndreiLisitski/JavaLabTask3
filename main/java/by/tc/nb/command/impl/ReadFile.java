@@ -7,7 +7,6 @@ import by.tc.nb.bean.entity.NoteBook;
 import by.tc.nb.command.Command;
 import by.tc.nb.command.exception.CommandException;
 import by.tc.nb.source.NoteBookProvider;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -25,8 +24,6 @@ public class ReadFile implements Command {
             String line = reader.readLine();
             while (line != null) {
                 String[] mas = line.split("\\|");
-                System.out.println(mas[0]);
-                System.out.println(mas[1]);
                 String note = mas[0];
                 long date = Long.parseLong(mas[1]);
                 Note fileNote = new Note(note, new Date(date));
@@ -37,8 +34,9 @@ public class ReadFile implements Command {
             response.setResultMessage("Notebook was written from file!");
         }
         catch(FileNotFoundException e){
-            response.setErrorMessage("File not found!");
+            throw new CommandException("File not found!");
         } catch(IOException b){
+            throw new CommandException("Error output/input!");
         }
 
         return response;

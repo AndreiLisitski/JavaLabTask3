@@ -7,8 +7,6 @@ import by.tc.nb.bean.entity.NoteBook;
 import by.tc.nb.command.Command;
 import by.tc.nb.command.exception.CommandException;
 import by.tc.nb.source.NoteBookProvider;
-
-import java.io.BufferedOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -25,6 +23,7 @@ public class WriteFile implements Command {
             }
         }
         catch(IOException e){
+            throw new CommandException("Error output/input!");
         }
         response.setErrorStatus(true);
         response.setResultMessage("Notebook was saved to file!");

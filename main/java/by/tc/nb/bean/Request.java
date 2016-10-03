@@ -10,7 +10,4 @@ public class Request {
 	public void setCommandName(String commandName) {
 		this.commandName = commandName;
 	}
-	
-	
-
 }

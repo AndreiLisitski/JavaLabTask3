@@ -2,7 +2,6 @@ package by.tc.nb.controller;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import by.tc.nb.command.Command;
 import by.tc.nb.command.impl.*;
 
@@ -18,17 +17,11 @@ public class CommandHelper {
 		commands.put("WRITE_FILE", new WriteFile());
 		commands.put("READ_FILE", new ReadFile());
 		commands.put("FIND_BY_DATE", new FindByDate());
-		//commands.put
-
 	}
 
 	public Command getCommand(String commandName) {
 		Command command;
-
 		command = commands.get(commandName);
-
 		return command;
-
 	}
-
 }

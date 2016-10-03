@@ -1,13 +1,9 @@
 package by.tc.nb.bean;
 
-import by.tc.nb.bean.entity.Note;
-
-import java.util.List;
-
 public class Response {
+
 	private boolean errorStatus;
 	private String errorMessage;
-	
 	private String resultMessage;
 
 	public boolean isErrorStatus() {

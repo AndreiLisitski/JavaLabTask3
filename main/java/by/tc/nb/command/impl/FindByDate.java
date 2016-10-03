@@ -6,7 +6,6 @@ import by.tc.nb.bean.entity.NoteBook;
 import by.tc.nb.command.Command;
 import by.tc.nb.command.exception.CommandException;
 import by.tc.nb.source.NoteBookProvider;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,14 +32,18 @@ public class FindByDate implements Command {
         }
         List<Note> list = new ArrayList<Note>();
         int day = 0,  month = 0, year = 0;
-        if (!req.getDay().equals("")) {
-            day = Integer.parseInt(req.getDay());
-        }
-        if (!req.getMonth().equals("")) {
-            month = Integer.parseInt(req.getMonth());
-        }
-        if (!req.getYear().equals("")) {
-            year = Integer.parseInt(req.getYear());
+        try {
+            if (req.getDay() != null && !req.getDay().equals("")) {
+                day = Integer.parseInt(req.getDay());
+            }
+            if (req.getMonth() != null && !req.getMonth().equals("")) {
+                month = Integer.parseInt(req.getMonth());
+            }
+            if (req.getYear() != null && !req.getYear().equals("")) {
+                year = Integer.parseInt(req.getYear());
+            }
+        } catch (NumberFormatException e) {
+            throw new CommandException("Incorrect date was entered!");
         }
         for (Note note : noteBook.getNotes()) {
             Calendar calendar = Calendar.getInstance();
@@ -74,20 +77,19 @@ public class FindByDate implements Command {
                     list.add(note);
                 }
             } else if (day == 0 && month != 0 && year != 0) {
-                if (month == monthNote && year ==yearNote) {
+                if (month == monthNote && year == yearNote) {
                     list.add(note);
                 }
             }
-            res.setErrorStatus(true);
-            if (list.isEmpty()) {
-                res.setResultMessage("There is no notes matched your request");
-            } else {
-                res.setDateNotes(list);
-                res.setResultMessage("All OK!");
-            }
-            return res;
+        }
+        res.setErrorStatus(true);
+        if (list.isEmpty()) {
+            res.setResultMessage("There is no notes matched your request");
+        } else {
+            res.setDateNotes(list);
+            res.setResultMessage("All OK!");
         }
 
-        return null;
+        return res;
     }
 }
